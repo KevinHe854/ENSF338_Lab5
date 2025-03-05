@@ -110,7 +110,7 @@ class PriorityQueue2:
                 index -= 1
 
 def generate_random_list():
-    return random.randint(0, 100)
+    return random.randint(1, 100)
 
 def generate_random_tasks():
     return [random.randint(0, 9) for i in range(0, 1000)]
