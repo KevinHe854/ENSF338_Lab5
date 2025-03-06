@@ -9,9 +9,6 @@ class ArrayStack:
     def __init__(self):
         self._stack = [generate_random_list() for i in range(0, 100)]
     
-    def getStack(self):
-        return self._stack
-    
     def push(self, num):
         self._stack.append(num)
     
@@ -23,12 +20,6 @@ class LLStack:
         self._head = None
         for i in range(0, 100):
             self._head = Node(generate_random_list(), self._head)
-    
-    def getStack(self):
-        current = self._head
-        while current is not None:
-            print(current.getData())
-            current = current.getNext()
     
     def push(self, num):
         self._head = Node(num, self._head)
@@ -95,8 +86,8 @@ for i in myTasks:
     a_times = timeit.repeat(setup=a_setup, stmt=a_stmt, repeat=100, number=1)
     ll_times = timeit.repeat(setup=ll_setup, stmt=ll_stmt, repeat=100, number=1)
     
-    plt.hist(a_times, color='r', label='ArrayStack')
-    plt.hist(ll_times, color='b', label='LLStack')
+    plt.hist(a_times, color='r', alpha=0.5, label='ArrayStack')
+    plt.hist(ll_times, color='b', alpha=0.5, label='LLStack')
     
     plt.title('Performance of Array vs Linked List Implementation of Stacks')
     plt.xlabel('Time (seconds)')
