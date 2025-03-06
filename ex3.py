@@ -13,6 +13,9 @@ class ArrayStack:
         self._stack.append(num)
     
     def pop(self):
+        if len(self._stack) == 0:
+            return None
+        
         return self._stack.pop()
 
 class LLStack:
@@ -25,6 +28,9 @@ class LLStack:
         self._head = Node(num, self._head)
     
     def pop(self):
+        if self._head == None:
+            return None
+        
         temp = self._head.getData()
         self._head = self._head.getNext()
         return temp
