@@ -88,26 +88,13 @@ class PriorityQueue2:
     
     def insert(self, num):
         index = len(self._queue)
-        
-        # Expand array by 1
-        self._queue.append(None)
-        
-        # Start at the end
+               
         while True:
-            # Reached the beginning
-            if index == 0:
-                self._queue[index] = num
-                break
-
-            # Insert the new number
-            elif self._queue[index - 1] <= num:
-                self._queue[index] = num
+            if index == 0 or self._queue[index-1] <= num:
+                self._queue.insert(index, num)
                 break
             
-            # Shift elements greater than num to the right by 1
-            else:
-                self._queue[index] = self._queue[index - 1]
-                index -= 1
+            index -= 1
 
 def generate_random_list():
     return random.randint(1, 100)
@@ -151,16 +138,6 @@ for i in myTasks:
     
     print('PriorityQueue1 time to complete tasks is {} seconds'.format(q1_time))
     print('PriorityQueue2 time to complete tasks is {} seconds'.format(q2_time))
-
-    # myPriorityQueue1 = PriorityQueue1()
-    # myPriorityQueue2 = PriorityQueue2()
-    # myTasks = generate_random_tasks()
-    
-    # for i in myTasks:
-    #     if i < 7:
-    #         myPriorityQueue1.enqueue(generate_random_list())
-    #     else:
-    #         myPriorityQueue1.dequeue()
 
 if __name__ == "__main__":
     main()
