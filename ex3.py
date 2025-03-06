@@ -22,7 +22,7 @@ class LLStack:
     def __init__(self):
         self._head = None
         for i in range(0, 100):
-            self._head = Node(i, self._head)
+            self._head = Node(generate_random_list(), self._head)
     
     def getStack(self):
         current = self._head
