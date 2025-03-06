@@ -28,7 +28,7 @@ class LLStack:
         self._head = Node(num, self._head)
     
     def pop(self):
-        if self._head == None:
+        if self._head is None:
             return None
         
         temp = self._head.getData()
