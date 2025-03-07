@@ -1,13 +1,12 @@
 # Question 5
-# The second implementation is faster because in the first implementation, whenever we initialize or enqueue in the first array, we are calling merge sort which has O(n long n) complexity, while in the second we are simply inserting the element where it belongs in order, which has O(n) complexity. Since O(n) is more efficient than O(n log n), the second way is faster than the first.
+# The second implementation is faster because in the first implementation, whenever we enqueue in the first array, we are calling merge sort which has O(n long n) complexity, while in the second we are simply inserting the element where it belongs in order, which has O(n) complexity. Since O(n) is more efficient than O(n log n), the second way is faster than the first.
 
 import timeit
 import random
 
 class PriorityQueue1:
     def __init__(self):
-        self._queue = [generate_random_list() for i in range(0, 100)]
-        self.merge_sort(0, len(self._queue) - 1)
+        self._queue = []
 
     def enqueue(self, num):
         self._queue.append(num)
@@ -71,9 +70,6 @@ class PriorityQueue1:
 class PriorityQueue2:
     def __init__(self):
         self._queue = []
-        for i in range(0, 100):
-            temp = generate_random_list()
-            self.insert(temp)
     
     def enqueue(self, num):
         self.insert(num)
@@ -96,7 +92,7 @@ class PriorityQueue2:
             
             index -= 1
 
-def generate_random_list():
+def generate_random_num():
     return random.randint(1, 100)
 
 def generate_random_tasks():
@@ -105,14 +101,14 @@ def generate_random_tasks():
 def main():
     q1_setup = '''
 from __main__ import PriorityQueue1
-from __main__ import generate_random_list
+from __main__ import generate_random_num
 from __main__ import generate_random_tasks
 myPriorityQueue1 = PriorityQueue1()
 myTasks = generate_random_tasks()
     '''
     q2_setup = '''
 from __main__ import PriorityQueue2
-from __main__ import generate_random_list
+from __main__ import generate_random_num
 from __main__ import generate_random_tasks
 myPriorityQueue2 = PriorityQueue2()
 myTasks = generate_random_tasks()
@@ -121,14 +117,14 @@ myTasks = generate_random_tasks()
     q1_stmt = '''
 for i in myTasks:
     if i < 7:
-        myPriorityQueue1.enqueue(generate_random_list())
+        myPriorityQueue1.enqueue(generate_random_num())
     else:
         myPriorityQueue1.dequeue()
     '''
     q2_stmt = '''
 for i in myTasks:
     if i < 7:
-        myPriorityQueue2.enqueue(generate_random_list())
+        myPriorityQueue2.enqueue(generate_random_num())
     else:
         myPriorityQueue2.dequeue()
     '''
