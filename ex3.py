@@ -7,7 +7,7 @@ from matplotlib import pyplot as plt
 
 class ArrayStack:
     def __init__(self):
-        self._stack = [generate_random_list() for i in range(0, 100)]
+        self._stack = []
     
     def push(self, num):
         self._stack.append(num)
@@ -21,8 +21,6 @@ class ArrayStack:
 class LLStack:
     def __init__(self):
         self._head = None
-        for i in range(0, 100):
-            self._head = Node(generate_random_list(), self._head)
     
     def push(self, num):
         self._head = Node(num, self._head)
@@ -52,7 +50,7 @@ class Node:
     def setNext(self, next):
         self._next = next
 
-def generate_random_list():
+def generate_random_num():
     return random.randint(1, 100)
 
 def generate_random_tasks():
@@ -61,14 +59,14 @@ def generate_random_tasks():
 def main():
     a_setup = '''
 from __main__ import ArrayStack
-from __main__ import generate_random_list
+from __main__ import generate_random_num
 from __main__ import generate_random_tasks
 myArrayStack = ArrayStack()
 myTasks = generate_random_tasks()
     '''
     ll_setup = '''
 from __main__ import LLStack
-from __main__ import generate_random_list
+from __main__ import generate_random_num
 from __main__ import generate_random_tasks
 myLLStack = LLStack()
 myTasks = generate_random_tasks()
@@ -77,14 +75,14 @@ myTasks = generate_random_tasks()
     a_stmt = '''
 for i in myTasks:
     if i < 7:
-        myArrayStack.push(generate_random_list())
+        myArrayStack.push(generate_random_num())
     else:
         myArrayStack.pop()
     '''
     ll_stmt = '''
 for i in myTasks:
     if i < 7:
-        myLLStack.push(generate_random_list())
+        myLLStack.push(generate_random_num())
     else:
         myLLStack.pop()
     '''
