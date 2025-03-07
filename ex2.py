@@ -1,5 +1,7 @@
 # Question 5
-# The second implementation is faster because in the first implementation, whenever we enqueue in the first array, we are calling merge sort which has O(n long n) complexity, while in the second we are simply inserting the element where it belongs in order, which has O(n) complexity. Since O(n) is more efficient than O(n log n), the second way is faster than the first.
+# The second implementation is faster because in the first implementation, whenever we enqueue in the first array, we are calling merge sort which 
+# has O(n long n) complexity, while in the second we are simply inserting the element where it belongs in order, which has O(n) complexity. Since O
+# (n) is more efficient than O(n log n), the second way is faster than the first.
 
 import timeit
 import random
