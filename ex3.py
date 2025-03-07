@@ -1,7 +1,8 @@
 # Question 5
 # An implementation of stacks runs pretty well for both arrays and linked lists. For arrays, push and pop only interact with the end of the array,
 # so complexity is O(1) unless we have to move the whole array due to not having enough space in memory after the array to push, in which case is 
-# O(n). For linked lists, we only interact with the head of the array, so complexity for push and pop is also O(1) since we don't have to traverse through the whole list.
+# O(n). For linked lists, we only interact with the head of the array, so complexity for push and pop is also O(1) since we don't have to traverse 
+# through the whole list.
 
 import timeit
 import random
