@@ -7,33 +7,28 @@ from matplotlib import pyplot as plt
 
 class ArrayStack:
     def __init__(self):
-        self._stack = [generate_random_list() for i in range(0, 100)]
-    
-    def getStack(self):
-        return self._stack
+        self._stack = []
     
     def push(self, num):
         self._stack.append(num)
     
     def pop(self):
+        if len(self._stack) == 0:
+            return None
+        
         return self._stack.pop()
 
 class LLStack:
     def __init__(self):
         self._head = None
-        for i in range(0, 100):
-            self._head = Node(generate_random_list(), self._head)
-    
-    def getStack(self):
-        current = self._head
-        while current is not None:
-            print(current.getData())
-            current = current.getNext()
     
     def push(self, num):
         self._head = Node(num, self._head)
     
     def pop(self):
+        if self._head is None:
+            return None
+        
         temp = self._head.getData()
         self._head = self._head.getNext()
         return temp
@@ -55,7 +50,7 @@ class Node:
     def setNext(self, next):
         self._next = next
 
-def generate_random_list():
+def generate_random_num():
     return random.randint(1, 100)
 
 def generate_random_tasks():
@@ -64,14 +59,14 @@ def generate_random_tasks():
 def main():
     a_setup = '''
 from __main__ import ArrayStack
-from __main__ import generate_random_list
+from __main__ import generate_random_num
 from __main__ import generate_random_tasks
 myArrayStack = ArrayStack()
 myTasks = generate_random_tasks()
     '''
     ll_setup = '''
 from __main__ import LLStack
-from __main__ import generate_random_list
+from __main__ import generate_random_num
 from __main__ import generate_random_tasks
 myLLStack = LLStack()
 myTasks = generate_random_tasks()
@@ -80,14 +75,14 @@ myTasks = generate_random_tasks()
     a_stmt = '''
 for i in myTasks:
     if i < 7:
-        myArrayStack.push(generate_random_list())
+        myArrayStack.push(generate_random_num())
     else:
         myArrayStack.pop()
     '''
     ll_stmt = '''
 for i in myTasks:
     if i < 7:
-        myLLStack.push(generate_random_list())
+        myLLStack.push(generate_random_num())
     else:
         myLLStack.pop()
     '''
@@ -95,8 +90,8 @@ for i in myTasks:
     a_times = timeit.repeat(setup=a_setup, stmt=a_stmt, repeat=100, number=1)
     ll_times = timeit.repeat(setup=ll_setup, stmt=ll_stmt, repeat=100, number=1)
     
-    plt.hist(a_times, color='r', label='ArrayStack')
-    plt.hist(ll_times, color='b', label='LLStack')
+    plt.hist(a_times, color='r', alpha=0.5, label='ArrayStack')
+    plt.hist(ll_times, color='b', alpha=0.5, label='LLStack')
     
     plt.title('Performance of Array vs Linked List Implementation of Stacks')
     plt.xlabel('Time (seconds)')
