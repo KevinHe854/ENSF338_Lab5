@@ -1,5 +1,5 @@
 # Question 5
-# It seems that an array implementation of stacks is more efficient than the linked list implementation. This is because Python already has methods for pushing and pooping from arrays, whereas we would have to create our own push and pop for linked lists.
+# It seems that an array implementation of stacks is more efficient than the linked list implementation. This is because Python already has methods for pushing and popping from arrays, whereas we would have to create our own push and pop for linked lists.
 
 import timeit
 import random
